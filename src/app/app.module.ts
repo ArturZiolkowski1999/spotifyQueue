@@ -11,10 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SongqueueComponent } from './pages/home/components/songqueue/songqueue.component';
 import { SearchfieldComponent } from './pages/home/components/searchfield/searchfield.component'
+import { HttpClientModule } from '@angular/common/http';
+import { SpotifySearchService } from './services/spotify-search.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -32,9 +38,13 @@ import { SearchfieldComponent } from './pages/home/components/searchfield/search
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    BrowserAnimationsModule
+    MatGridListModule,
+    MatListModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SpotifySearchService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
