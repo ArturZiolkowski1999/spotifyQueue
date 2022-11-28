@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  SEARCH_BASE_URL: 'http://localhost:4200/api/search?type=track&q=',
+  TOKEN_BASE_URL: 'https://accounts.spotify.com/api/token',
 
 
 };

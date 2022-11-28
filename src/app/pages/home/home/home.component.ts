@@ -29,22 +29,21 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getToken();
-    this.getTracks('ich troje');
+    this.getTracks('ziółas rządzi');
   }
 
   getTracks(queryString: string) {
+    //TODO! if no token in cookies then get token
     if (!(this.token = this.cookieService.get('token'))){
       this.getToken();
-    } // if token expires then get token
+    } //TODO! if token expires then get token
     this.tracksSubscription = this.spotifySearchService.getTrackByQueryString(queryString, this.token)
      .subscribe((response) => {
       this.tracks = response.tracks.items;
-      console.log(response.tracks.items);
     });
   }
 
   getToken() {
-
     this.tokenSubscription = this.spotifySearchService.getToken()
      .subscribe((response) => {
       this.cookieService.set( 'token', response.access_token );
@@ -54,6 +53,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onAddToQueue(track: any) {
     console.log(track);
-    }
+  }
+
+  onSearchQuerryEnterred(queryString: string){
+    this.getTracks(queryString);
+  }
 
 }

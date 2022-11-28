@@ -1,9 +1,5 @@
-<app-searchfield></app-searchfield>
+<app-searchfield (changeInput)="onSearchQuerryEnterred($event)"></app-searchfield>
 
-<mat-grid-list cols="1" *ngFor="let track of tracks" >
+<mat-grid-list cols="2" *ngFor="let track of tracks" >
     <app-songqueue [track]="track" (addToQueue)="onAddToQueue($event)" class="w-full p-0.5"></app-songqueue>
 </mat-grid-list>
-
-
-<div>{{token}}</div>
-<div>{{tracks}}</div>
